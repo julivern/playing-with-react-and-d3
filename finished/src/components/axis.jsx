@@ -1,22 +1,38 @@
 import React from 'react';
-import d3    from 'd3';
+import d3 from 'd3';
 
+/* eslint-disable react/prop-types */
 export default class Axis extends React.Component {
-  componentDidUpdate() {
-    this.renderAxis();
-  }
+    constructor(props) {
+        super(props);
+        this.graphRef = null;
+        this.setFocusRef = element => {
+            this.graphRef = element;
+        };
+    }
 
-  componentDidMount() {
-    this.renderAxis();
-  }
+    componentDidUpdate() {
+        this.renderAxis();
+    }
 
-  renderAxis() {
-    var node  = this.refs.axis;
-    var axis = d3.svg.axis().orient(this.props.orient).ticks(5).scale(this.props.scale);
-    d3.select(node).call(axis);
-  }
+    componentDidMount() {
+        this.renderAxis();
+    }
 
-  render() {
-    return <g className="axis" ref="axis" transform={this.props.translate}></g>
-  }
+    renderAxis() {
+    // var node  = this.refs.axisee;
+        const node = this.graphRef;
+        const axis = d3.svg.axis().orient(this.props.orient).ticks(5).scale(this.props.scale);
+        d3.select(node).call(axis);
+    // d3.select("g").call(axis);
+    }
+
+    render() {
+        return <g
+      className="axis"
+      // ref="axisee"
+      ref={this.setFocusRef}
+      // id="graph1"
+      transform={this.props.translate} />;
+    }
 }

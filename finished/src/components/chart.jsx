@@ -1,16 +1,17 @@
-import React                from 'react';
-import {connect}            from 'react-redux';
-import * as actionCreators  from '../lib/action-creators';
-import ScatterPlot          from './scatter-plot';
+import React from 'react';
+import {connect} from 'react-redux';
+import * as actionCreators from '../lib/action-creators';
+import ScatterPlot from './scatter-plot';
 
 const styles = {
-  width   : 500,
-  height  : 300,
-  padding : 30,
+    width: 500,
+    height: 300,
+    padding: 30,
 };
 
+/* eslint-disable react/prop-types */
 const Chart = (props) => {
-  return <div>
+    return <div>
     <h1>Playing With React and D3</h1>
     <ScatterPlot {...props} {...styles} />
     <div className="controls">
@@ -18,7 +19,7 @@ const Chart = (props) => {
         Randomize Data
       </button>
     </div>
-  </div>
+  </div>;
 };
 
 export default connect((state) => state, actionCreators)(Chart);

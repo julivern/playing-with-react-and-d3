@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "This is a demo app demonstrating how React and D3 can be friends",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.js 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch",
+    "start:debug": "node --inspect-brk=5858 ./src/index.jsx",
     "start": "webpack-dev-server",
     "lint": "eslint . --ext .js --ext .jsx"
   },
@@ -49,7 +51,11 @@
     "webpack-merge": "^0.7.3"
   },
   "dependencies": {
+    "babel-eslint": "^10.1.0",
     "d3": "^3.5.16",
+    "eslint": "7.30.0",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.0",
