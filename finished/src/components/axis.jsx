@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import d3 from 'd3';
 
 /* eslint-disable react/prop-types */
@@ -36,3 +36,19 @@ export default class Axis extends React.Component {
       transform={this.props.translate} />;
     }
 }
+
+// export function Test(props) {
+//     console.log("props", props);
+//     const [graphRef, setGraphRef] = useState(null);
+//     function renderAxis() {
+//         const node = graphRef;
+//         const axis = d3.svg.axis().orient(props.orient).ticks(5).scale(props.scale);
+//         d3.select(node).call(axis);
+//     }
+//     useEffect(() => {renderAxis()});
+//     return (
+//         <g className="axis"
+//         ref={(element) => setGraphRef(element)}
+//         transform={props.translate}/>
+//     );
+// }
