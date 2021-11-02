@@ -55,7 +55,6 @@ if (TARGET === 'start' || !TARGET) {
         devServer: {
             historyApiFallback: true,
             hot: true,
-            // inline: true,
             port: 8080,
             client: {
                 progress: true,
