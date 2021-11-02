@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {makeStore} from './lib/store';
 import Chart from './components/chart.jsx';
-// import './main.css';
+import './main.css';
 
 const store = makeStore();
 const app = <Provider store={store}>
