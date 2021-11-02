@@ -2,7 +2,7 @@
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 
 const TARGET = process.env.npm_lifecycle_event;
 const ROOT_PATH = path.resolve(__dirname);
@@ -17,10 +17,10 @@ const common = {
         filename: 'bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.css$/,
-                loaders: ['style', 'css'],
+                use: ['style-loader', 'css-loader'],
                 include: path.resolve(ROOT_PATH, 'src')
             }
         ]
@@ -35,14 +35,19 @@ const common = {
 if (TARGET === 'start' || !TARGET) {
     module.exports = merge(common, {
         devtool: 'eval-source-map',
+        mode: 'development',
         module: {
-            loaders: [
+            rules: [
                 {
                     test: /\.jsx?$/,
                     include: path.resolve(ROOT_PATH, 'src'),
-                    loaders: [
-                        'react-hot',
-                        'babel?presets[]=react,presets[]=es2015'
+                    use: [
+                        {loader: 'babel-loader',
+                            options: {
+                                presets: ['@babel/preset-env'],
+                                plugins: ["react-hot-loader/babel"]
+                            }
+                        }
                     ]
                 }
             ]
@@ -50,9 +55,11 @@ if (TARGET === 'start' || !TARGET) {
         devServer: {
             historyApiFallback: true,
             hot: true,
-            inline: true,
-            progress: true,
-            port: 8080
+            // inline: true,
+            port: 8080,
+            client: {
+                progress: true,
+            }
         },
         plugins: [
             new webpack.HotModuleReplacementPlugin()
