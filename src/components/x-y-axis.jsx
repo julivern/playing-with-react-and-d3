@@ -1,5 +1,5 @@
 import React from 'react';
-import Axis, {Test} from './axis';
+import Axis from './axis';
 
 /* eslint-disable react/display-name */
 /* eslint-disable react/prop-types */
