@@ -24,3 +24,23 @@ svg {
   margin: 4em auto 4em auto;
   background-color: 'aquawhite';
 }
+
+/* circle {
+  fill: cadetblue;
+} */
+/* line {
+  stroke: #ccc;
+} */
+.node {
+  cursor: move;
+  fill: #ccc;
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+.linkLabel {
+  color: #0b3af7;
+  flood-color: #FFFFFF;
+  flood-opacity: 1;
+  font-size: 15px;
+  text-anchor: middle;
+}

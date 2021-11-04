@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"search.exclude": {
+			"**/node_modules": false,
+			"**/bower_components": true,
+			"**/*.code-search": true
+		},
+		"[git-commit]": {
+			"editor.rulers": [
+				72, 50
+			],
+			"workbench.editor.restoreViewState": false
+		}
+	}
+}

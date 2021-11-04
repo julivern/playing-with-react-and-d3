@@ -1,13 +1,24 @@
 import React, {useState, useEffect} from 'react';
-import d3 from 'd3';
+import {select} from 'd3-selection';
+import {axisLeft, axisBottom} from 'd3-axis';
 
 /* eslint-disable react/prop-types */
 export default function Axis(props) {
     const [graphRef, setGraphRef] = useState(null);
     const renderAxis = () => {
         const node = graphRef;
-        const axis = d3.svg.axis().orient(props.orient).ticks(5).scale(props.scale);
-        d3.select(node).call(axis);
+        let axis = null;
+        switch (props.orient) {
+            case 'left':
+                axis = axisLeft(props.scale).ticks(5);
+                break;
+            case 'bottom':
+                axis = axisBottom(props.scale).ticks(5);
+                break;
+            default:
+                axis = axisBottom(props.scale).ticks(5);
+        }
+        select(node).call(axis);
     };
     useEffect(() => {
         renderAxis();
